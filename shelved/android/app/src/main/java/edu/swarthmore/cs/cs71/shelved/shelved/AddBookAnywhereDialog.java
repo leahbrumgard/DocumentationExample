@@ -16,7 +16,7 @@ public class AddBookAnywhereDialog extends AlertDialog.Builder {
 
     public AddBookAnywhereDialog(Context context, final SimpleBook book) {
         super(context);
-        this.setTitle("Add Book to:");
+        this.setTitle("Add Book to Shelf");
         this.userID = userID;
         this.book = book;
 
