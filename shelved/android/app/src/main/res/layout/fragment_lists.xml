@@ -26,15 +26,19 @@
     </LinearLayout>
     <GridView xmlns:android="http://schemas.android.com/apk/res/android"
               android:id="@+id/list_gridview"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
               android:columnWidth="90dp"
               android:numColumns="auto_fit"
               android:verticalSpacing="10dp"
               android:horizontalSpacing="10dp"
               android:stretchMode="columnWidth"
+              android:scaleType="fitCenter"
+              android:layout_width="180dp"
+              android:layout_height="180dp"
               android:gravity="center"
               android:layout_below="@+id/add_list" android:layout_toEndOf="@+id/linearLayout4"/>
+              <!--android:layout_width="match_parent"-->
+              <!--android:layout_height="match_parent"-->
+
     <ImageButton
             android:id="@+id/add_list"
             android:contentDescription="add list"

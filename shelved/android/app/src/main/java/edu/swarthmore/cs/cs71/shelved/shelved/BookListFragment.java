@@ -16,6 +16,7 @@ import android.widget.*;
 import edu.swarthmore.cs.cs71.shelved.model.bookData.BookInfo;
 import edu.swarthmore.cs.cs71.shelved.model.bookData.EmptyQueryException;
 import edu.swarthmore.cs.cs71.shelved.model.bookData.NotFoundException;
+import edu.swarthmore.cs.cs71.shelved.model.simple.SimpleBook;
 import edu.swarthmore.cs.cs71.shelved.model.simple.SimpleReadingList;
 import edu.swarthmore.cs.cs71.shelved.shelved.shelvedModel.ListsUpdatedListener;
 
@@ -45,6 +46,7 @@ public class BookListFragment extends Fragment {
         //gridview.setAdapter(new IconAdapter(getContext()));
 
         readingLists = AppSingleton.getInstance(getContext()).getModel(getContext()).getLists();
+
 
         gridview.setAdapter(new GridAdapter(readingLists));
 
