@@ -1,12 +1,12 @@
 package edu.swarthmore.cs.cs71.shelved.shelved;
 
+import android.app.Application;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
@@ -14,7 +14,7 @@ import com.google.gson.Gson;
 import com.koushikdutta.ion.Ion;
 import edu.swarthmore.cs.cs71.shelved.model.simple.SimpleBook;
 import edu.swarthmore.cs.cs71.shelved.model.simple.SimpleReadingList;
-import org.w3c.dom.Text;
+import edu.swarthmore.cs.cs71.shelved.shelved.shelvedModel.RecommendedBookListListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -79,6 +79,19 @@ public class BookInfoFragment extends Fragment {
         setFieldsFromBook(rootView);
         Log.d("ABOUT TO SET REC LIST", "");
         recList = (ListView) rootView.findViewById(android.R.id.list);
+//        recommendedBooks = new ArrayList<SimpleBook>();
+//        recList.setAdapter(new BookListAdapter(getContext(), recommendedBooks));
+        this.bookListAdapter = new BookListAdapter(getContext(), AppSingleton.getInstance(getContext()).getModel(getContext()).getRecBookList());
+//        recommendedBooks = AppSingleton.getInstance(getContext()).getModel(getContext()).getRecBookList();
+//        Log.d("after continuation", recommendedBooks.toString());
+//        recList.setAdapter(new BookListAdapter(getContext(), recommendedBooks));
+
+//        AppSingleton.getInstance(getContext()).getModel(getContext()).addRecBookListener(new RecommendedBookListListener() {
+//            @Override
+//            public void setRecommendedList() {
+//                bookListAdapter.notifyDataSetChanged();
+//            }
+//        });
         return rootView;
     }
 
@@ -98,11 +111,23 @@ public class BookInfoFragment extends Fragment {
             public void run(List<SimpleBook> books) {
                 //TODO it should have a similar format to what's below, but not exactly because this old code is dealing with search view fragment.
                 Log.d("Continuation",books.toString());
-
-                recommendedBooks = books;
+                AppSingleton.getInstance(getContext()).getModel(getContext()).setRecBooksList(books);
+                recommendedBooks = AppSingleton.getInstance(getContext()).getModel(getContext()).getRecBookList();
+                Log.d("inside continuation", AppSingleton.getInstance(getContext()).getModel(getContext()).getRecBookList().toString());
+//                recList.setAdapter(new BookListAdapter(getContext(), recommendedBooks));
+                AppSingleton.getInstance(getContext()).getModel(getContext()).addRecBookListener(new RecommendedBookListListener() {
+                    @Override
+                    public void setRecommendedList() {
+                        bookListAdapter.notifyDataSetChanged();
+                    }
+                });
                 recList.setAdapter(new BookListAdapter(getContext(), recommendedBooks));
             }
         };
+
+//        recommendedBooks = AppSingleton.getInstance(getContext()).getModel(getContext()).getRecBookList();
+//        Log.d("after continuation", recommendedBooks.toString());
+//        recList.setAdapter(new BookListAdapter(getContext(), recommendedBooks));
 
         recList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -114,9 +139,6 @@ public class BookInfoFragment extends Fragment {
                 replaceFragment(fragment);
             }
         });
-
-
-
         AppSingleton.getInstance(getContext()).getModel(getContext()).getRecs(getContext(),this.isbn, continuationRecs);
 
         addBook.setOnClickListener(new View.OnClickListener() {
@@ -127,7 +149,7 @@ public class BookInfoFragment extends Fragment {
                 // TODO: Intent
                 Log.d("Book info fragment", "show add book dialog");
                 Log.d("Book info fragment", "called newInstance");
-                AddBookAnywhereDialog alert = new AddBookAnywhereDialog(getContext(),simpleBook);
+                AddBookToShelfDialog alert = new AddBookToShelfDialog(getContext(),simpleBook);
                 alert.show();
             }
         });

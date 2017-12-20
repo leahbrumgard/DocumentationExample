@@ -46,7 +46,7 @@ public class ShelvedModel {
         return this.readingLists;
     }
 
-    public List<SimpleBook> recBookList() {
+    public List<SimpleBook> getRecBookList() {
         return this.recBookList;
     }
 
@@ -139,9 +139,10 @@ public class ShelvedModel {
         notifyListAddedListeners(list);
     }
 
-    public void setRecBooksList(List<SimpleBook> recBookList, String isbn){
+    public void setRecBooksList(List<SimpleBook> recBookList){
         this.recBookList = recBookList;
-        notifyRecommendedBookListListeners(isbn);
+        Log.d("Setting Rec books", this.recBookList.toString());
+        notifyRecommendedBookListListeners();
     }
 
 
@@ -200,12 +201,15 @@ public class ShelvedModel {
     }
 
     //////////////////Rec Book /////////////////////////////////////
-    private void notifyRecommendedBookListListeners(String isbn) {
+    private void notifyRecommendedBookListListeners() {
         for (RecommendedBookListListener listener:this.recommendedBookListListeners){
-            listener.getRecommendedList(isbn);
+            listener.setRecommendedList();
         }
     }
 
+    public void addRecBookListener(RecommendedBookListListener newRecBookListListener) {
+        recommendedBookListListeners.add(newRecBookListListener);
+    }
 
     ///////////////// Add book Listeners/ updaters /////////////////
 

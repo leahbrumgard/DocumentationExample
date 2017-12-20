@@ -99,7 +99,7 @@ public class AppSingleton {
 //        shelvedModel.addListAddedListener(new RecommendedBookListListener() {
 //
 //            @Override
-//            public void getRecommendedList(String isbn) {
+//            public void setRecommendedList(String isbn) {
 //                StringRequest strReq = new GetBookRecsFromISBNRequest(context, isbn, );
 //            }
 //        });

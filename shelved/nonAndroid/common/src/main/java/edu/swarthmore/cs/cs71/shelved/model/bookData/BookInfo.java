@@ -30,7 +30,7 @@ public class BookInfo {
 
 
     private final int MAX_BOOKS = 3;
-    private final int MAX_NUM_RECS = 3;
+    private final int MAX_NUM_RECS = 10;
 
     public BookInfo() {}
 

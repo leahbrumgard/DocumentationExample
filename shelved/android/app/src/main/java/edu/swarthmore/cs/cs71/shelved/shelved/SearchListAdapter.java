@@ -32,7 +32,7 @@ public class SearchListAdapter extends ArrayAdapter<SimpleBook> {
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AddBookAnywhereDialog alert = new AddBookAnywhereDialog(getContext(), book);
+                AddBookToShelfDialog alert = new AddBookToShelfDialog(getContext(), book);
                 alert.show();
             }
         });

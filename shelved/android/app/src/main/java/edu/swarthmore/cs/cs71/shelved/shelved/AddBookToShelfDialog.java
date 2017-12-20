@@ -7,14 +7,14 @@ import android.util.Log;
 import android.widget.LinearLayout;
 import edu.swarthmore.cs.cs71.shelved.model.simple.SimpleBook;
 
-public class AddBookAnywhereDialog extends AlertDialog.Builder {
-    private static final String TAG = "AddBookAnywhereDialog";
+public class AddBookToShelfDialog extends AlertDialog.Builder {
+    private static final String TAG = "AddBookToShelfDialog";
     private String userID;
     private SimpleBook book;
 
-    public AddBookAnywhereDialog(Context context, int themeResId) { super(context, themeResId); }
+    public AddBookToShelfDialog(Context context, int themeResId) { super(context, themeResId); }
 
-    public AddBookAnywhereDialog(Context context, final SimpleBook book) {
+    public AddBookToShelfDialog(Context context, final SimpleBook book) {
         super(context);
         this.setTitle("Add Book to Shelf?");
         this.userID = userID;
