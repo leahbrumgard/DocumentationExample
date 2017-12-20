@@ -36,7 +36,6 @@ public class GetBookRecsFromISBNRequest  extends StringRequest {
                         if (!error) {
                             Log.d(TAG, "no error");
 
-//                            Toast.makeText(context, "Results for isbn: "+isbn, Toast.LENGTH_SHORT).show();
                             Gson gson = new Gson();
 
                             JSONArray jArr = jObj.getJSONArray("possibleBooks");//TODO SHOULD I RENAME THIS?
@@ -44,10 +43,8 @@ public class GetBookRecsFromISBNRequest  extends StringRequest {
                             for (int i = 0; i < jArr.length(); i++){
                                 books.add(gson.fromJson(jArr.get(i).toString(), SimpleBook.class));
                             }
-                            Log.d("BOOK RECS 1: ", String.valueOf(books));
                             // hold on to this book object in the searchViewModel
                             continuation.run(books);
-                            Log.d("BOOK RECS 2: ", String.valueOf(books));
 
                         } else {
                             Log.d(TAG, "error");

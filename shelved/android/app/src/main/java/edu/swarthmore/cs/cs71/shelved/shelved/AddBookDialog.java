@@ -41,10 +41,7 @@ public class AddBookDialog extends AlertDialog.Builder {
 
         this.setPositiveButton("Add", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichButton) {
-                Log.v("title", titleBox.getText().toString());
-                Log.v("author", authorBox.getText().toString());
 
-                String cancel_req_tag = "addBook";
                 String titleString = titleBox.getText().toString();
                 String authorString = authorBox.getText().toString();
 

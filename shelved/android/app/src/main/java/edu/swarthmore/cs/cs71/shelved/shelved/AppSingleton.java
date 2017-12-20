@@ -55,7 +55,6 @@ public class AppSingleton {
             addLogInSuccessNetWorkListeners(context, model);
             addBookToListNetworkListeners(context, model);
             model.initializeReadingLists();
-            //addRecommendedBookListeners(context, model);
         }
         return model;
     }
@@ -94,16 +93,6 @@ public class AppSingleton {
     }
 
 
-    ///////////////// Rec books /////////////////////////////
-//    private void addRecommendedBookListeners(final Context context, final ShelvedModel shelvedModel) {
-//        shelvedModel.addListAddedListener(new RecommendedBookListListener() {
-//
-//            @Override
-//            public void setRecommendedList(String isbn) {
-//                StringRequest strReq = new GetBookRecsFromISBNRequest(context, isbn, );
-//            }
-//        });
-//    }
     ///////////////// List added Listeners /////////////////
 
     private void addListNetworkListeners(final Context context, final ShelvedModel shelvedModel) {
@@ -117,22 +106,7 @@ public class AppSingleton {
         });
     }
 
-    ///////////////// Sign up success Listeners /////////////////
 
-//    public void addSignUpSuccessNetworkListeners(final Context context, final ShelvedModel shelvedModel){
-//        shelvedModel.addSignUpSuccessListeners(new SignUpSuccessListener() {
-//            @Override
-//            public void onSignUpSuccess(String userName, String email, String password, ProgressDialog progressDialog) {
-//                StringRequest strReq = new UserSignUpRequest(context, userName, email, password, progressDialog);
-//                AppSingleton.getInstance(context).addToRequestQueue(strReq, "signUp");
-//                // Launch loginActivity
-//                Intent intent = new Intent(
-//                        context,
-//                        LoginActivity.class);
-//                context.startActivity(intent);
-//            }
-//        });
-//    }
 
     public void addLogInSuccessNetWorkListeners(final Context context, final ShelvedModel shelvedModel){
         shelvedModel.addLogInSuccessListeners(new LogInSuccessListener() {

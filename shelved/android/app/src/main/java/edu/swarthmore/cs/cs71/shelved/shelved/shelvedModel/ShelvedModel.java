@@ -233,18 +233,6 @@ public class ShelvedModel {
         }
     }
 
-    ///////////////// Sign up success Listeners /////////////////
-//    public void addSignUpSuccessListeners(SignUpSuccessListener signUpSuccessListener){
-//        signUpSuccessListeners.add(signUpSuccessListener);
-//    }
-//    private void notifySignUpSuccessListeners(String userName, String email, String password, ProgressDialog progressDialog){
-//        for (SignUpSuccessListener listener:this.signUpSuccessListeners){
-//            listener.onSignUpSuccess(userName, email, password, progressDialog);
-//        }
-//    }
-//    public void removeAllSignUpSuccessListeners(){
-//        signUpSuccessListeners.clear();
-//    }
 
 
     ///////////////// Sign up attempt Listeners /////////////////
@@ -263,11 +251,9 @@ public class ShelvedModel {
 
     public void searchByISBN(final Context context, String ISBN, Continuation<SimpleBook> continuation) {
         StringRequest strReq = new GetBookFromISBNRequest(context, ISBN, continuation);
-        // Adding request to request queue
-        Log.d("testing","about to add to queue");
         AppSingleton.getInstance(context).addToRequestQueue(strReq, "addSearchByISBN");
-        Log.d("testing","Finished adding to queue");
     }
+
     public void searchByTitleAuthor(final Context context, String title, String author, Continuation<List<SimpleBook>> continuation){
         StringRequest strReq = new GetBookFromTitleAuthorRequest(context, title, author, continuation);
         AppSingleton.getInstance(context).addToRequestQueue(strReq, "searchByTitle");

@@ -29,11 +29,7 @@ public class GetBookListStringRequest extends StringRequest {
                     @Override
                     public void onResponse(String response) {
                         Log.d(TAG, "Update book response: " + response);
-                        ResponseMessage message = GsonUtils.makeMessageGson().fromJson(response, ResponseMessage.class);
 
-                        if (message.isResult()) {
-                            //ValidBookListUpdateResponse bookListUpdateResponse = (ValidBookListUpdateResponse) message;
-                        }
                         try {
                             Log.d(TAG, response);
                             JSONObject jObj = new JSONObject(response);

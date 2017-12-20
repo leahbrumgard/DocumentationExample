@@ -41,8 +41,6 @@ public class GetBookFromISBNRequest extends StringRequest {
                     boolean error = !jObj.getBoolean("result");
                     if (!error) {
                         Log.d(TAG, "no error");
-
-                        //Toast.makeText(context, "Results for ISBN "+ISBN, Toast.LENGTH_SHORT).show();
                         Gson gson = new Gson();
                         SimpleBook book = gson.fromJson(jObj.getJSONObject("book").toString(), SimpleBook.class);
 

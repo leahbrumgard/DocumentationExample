@@ -37,7 +37,6 @@ public class AddListStringRequest extends StringRequest {
                     JSONObject jObj = new JSONObject(response);
                     boolean error = !jObj.getBoolean("result");
 
-                    // TODO: move Toasts ?
                     if (!error) {
                         Log.d(TAG, "no error");
                         String listName = jObj.getJSONObject("list").getJSONObject("name").getString("name");

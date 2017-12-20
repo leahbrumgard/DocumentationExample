@@ -62,9 +62,6 @@ public class AddListDialog extends AlertDialog.Builder {
                 String cancel_req_tag = "addList";
                 String listNameString = listNameBox.getText().toString();
                 String statusString = status.getText().toString();
-                //Log.d("STATUS STRING", statusString);
-                //Log.v("STATUS STRING!!!!!!!", statusString);
-
                 boolean publicBool;
                 if (statusString.equals("Public")) {
                     publicBool = true;

@@ -25,9 +25,6 @@ public class GetSingleReadingListStringRequest extends StringRequest {
             new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {
-                    Log.d(TAG, "Get single list response: " + response);
-                    ResponseMessage message = GsonUtils.makeMessageGson().fromJson(response, ResponseMessage.class);
-
                     try {
                         Log.d(TAG, response);
                         JSONObject jObj = new JSONObject(response);

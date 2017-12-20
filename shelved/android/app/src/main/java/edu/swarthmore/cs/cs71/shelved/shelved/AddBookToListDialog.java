@@ -34,15 +34,6 @@ public class AddBookToListDialog extends AlertDialog.Builder {
 
         this.setPositiveButton("Add", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichButton) {
-                String cancel_req_tag = "addBook";
-
-                // if select add to shelf:
-                //AppSingleton.getInstance(getContext()).getModel(getContext()).addBook(book);
-                // if select add to list:
-                //int position = 0;
-                //TODO:
-                //AppSingleton.getInstance(getContext()).getModel(getContext()).addBookToList(book, position);
-
                 AppSingleton.getInstance(getContext()).getModel(getContext()).addBookToList(book, list);
             }
         });

@@ -26,18 +26,12 @@ public class GetReadingListsStringRequest extends StringRequest {
             @Override
             public void onResponse(String response) {
                 Log.d(TAG, "Update lists response: " + response);
-                ResponseMessage message = GsonUtils.makeMessageGson().fromJson(response, ResponseMessage.class);
-
-                if (message.isResult()) {
-                    //ValidBookListUpdateResponse bookListUpdateResponse = (ValidBookListUpdateResponse) message;
-                }
                 try {
                     Log.d(TAG, response);
                     JSONObject jObj = new JSONObject(response);
                     boolean error = !jObj.getBoolean("result");
                     if (!error) {
                         Log.d(TAG, "no error");
-                        // TODO: turn Response into a list of book, update the list, tell Adapter
                         // populate the array
                         JSONArray jArr = jObj.getJSONArray("ReadingLists");
 

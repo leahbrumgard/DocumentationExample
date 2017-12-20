@@ -31,17 +31,10 @@ public class AddBookToListStringRequest extends StringRequest {
                             Log.d(TAG, response);
                             JSONObject jObj = new JSONObject(response);
                             boolean error = !jObj.getBoolean("result");
-
-                            // TODO: move Toasts ?
                             if (!error) {
                                 Log.d(TAG, "no error");
                                 String bookTitle = jObj.getJSONObject("book").getJSONObject("title").getString("title");
                                 Toast.makeText(context, "You successfully added " + bookTitle, Toast.LENGTH_SHORT).show();
-
-                                //TODO: make get Readinglsit stirng rewuqest
-                                //GetBookListStringRequest getBookListStringRequest = new GetBookListStringRequest(context, shelvedModel);
-                                //AppSingleton.getInstance(context).addToRequestQueue(getBookListStringRequest, "get book list");
-
                             } else {
                                 Log.d(TAG, "error");
                                 String errorMsg = jObj.getString("error_msg");
