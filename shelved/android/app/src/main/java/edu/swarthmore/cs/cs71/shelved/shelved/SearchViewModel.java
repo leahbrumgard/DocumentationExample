@@ -56,7 +56,7 @@ public class SearchViewModel {
         this.dialog = dialog;
     }
 
-    //////////// SCANNER STUFF ? :( //////////////
+    //////////// SCANNER //////////////
 
     public void addScan(String ISBN) {
         Log.d("ADDSCAN", "IN ADD SCAN");
@@ -75,9 +75,4 @@ public class SearchViewModel {
             listener.scanAdded(ISBN);
         }
     }
-
-
-
-    // add, remove, clear books needs to call listeners
-    // add listeners
 }

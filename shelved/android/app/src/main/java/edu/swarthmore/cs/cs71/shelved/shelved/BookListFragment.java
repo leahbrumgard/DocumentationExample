@@ -42,9 +42,6 @@ public class BookListFragment extends Fragment {
 
         gridview = (GridView) view.findViewById(R.id.list_gridview);
         addList = (ImageButton) view.findViewById(R.id.add_list);
-
-        //gridview.setAdapter(new IconAdapter(getContext()));
-
         readingLists = AppSingleton.getInstance(getContext()).getModel(getContext()).getLists();
 
 
@@ -78,7 +75,6 @@ public class BookListFragment extends Fragment {
                 list = (SimpleReadingList)adapterView.getItemAtPosition(i);
                 Fragment fragment = ListInfoFragment.newInstance(list, i);
                 replaceFragment(fragment);
-                //Toast.makeText(getContext(), String.valueOf(i), Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -97,7 +93,6 @@ public class BookListFragment extends Fragment {
         final int mCount;
 
         private GridAdapter(final List<SimpleReadingList> items) {
-
             mCount = items.size() * ROW_ITEMS;
             mItems = items;
         }
@@ -127,20 +122,9 @@ public class BookListFragment extends Fragment {
             }
 
             final TextView text = (TextView) view.findViewById(android.R.id.text1);
-
             text.setText(mItems.get(position).getName());
-
             final ImageView imageView = (ImageView) view.findViewById(android.R.id.icon);
-
             imageView.setImageResource(R.mipmap.logo);
-
-//            try {
-//                String url = bookInfo.getUrlBookCoverFromISBN("0547545118");
-//                Log.d("URL BOOK", url);
-//                Ion.with(imageView).placeholder(R.mipmap.logo).error(R.mipmap.logo).load(url);
-//            } catch (Exception E) {
-//                Log.d("getUrlBookCover", "exception");
-//            }
 
             return view;
         }

@@ -31,30 +31,19 @@ import org.w3c.dom.Text;
 import java.util.ArrayList;
 import java.util.List;
 
-//import edu.swarthmore.cs.cs71.shelved.network.ValidBookListUpdateResponse;
-
-
-
 
 public class ShelfFragment extends ListFragment {
     private BookListAdapter bookListAdapter;
 
     private static final String TAG = "ShelfFragment";
-//    private static int BOOKS_AMOUNT = 2;
+    // private static int BOOKS_AMOUNT = 2;
 
     private ListView bookList;
     private ImageButton addBook;
-
-    // In order to populate the individual book view
     private SimpleBook book;
-//    private String userID;
 
     public static ShelfFragment newInstance(String userID) {
         ShelfFragment fragment = new ShelfFragment();
-        // Supply index input as an argument.
-//        Bundle args = new Bundle();
-//        args.putString("userID", userID);
-//        fragment.setArguments(args);
         return fragment;
     }
 
@@ -68,10 +57,8 @@ public class ShelfFragment extends ListFragment {
         bookList = (ListView)view.findViewById(android.R.id.list);
         this.bookListAdapter = new BookListAdapter(getContext(), AppSingleton.getInstance(getContext()).getModel(getContext()).getBookList());
         bookList.setAdapter(bookListAdapter);
-
         addBook = (ImageButton)view.findViewById(R.id.add_book);
         Bundle args = getArguments();
-
 
         // notifies and tells GUI to redraw shelf when book list changes
         AppSingleton.getInstance(getContext()).getModel(getContext()).addShelfUpdatedListener(new ShelfUpdatedListener() {
@@ -80,7 +67,6 @@ public class ShelfFragment extends ListFragment {
                 bookListAdapter.notifyDataSetChanged();
             }
         });
-
         return view;
     }
 
@@ -94,23 +80,10 @@ public class ShelfFragment extends ListFragment {
     @Override
     public void onActivityCreated(@Nullable final Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
-//        addBook.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                // Create and show AddBookDialog
-//                AddBookDialog alert = new AddBookDialog(getContext());
-//                Log.d(TAG, "show add book dialog");
-//                Log.d(TAG, "called newInstance");
-//                alert.show();
-//            }
-//        });
         bookList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                 book = (SimpleBook)adapterView.getItemAtPosition(position);
-                //setFieldsFromBook(book, view);
-                Log.d("AUTHOR IN SHELF FRAG", book.getAuthor().getAuthorName());
                 Fragment fragment = BookInfoFragment.newInstance(book);
                 replaceFragment(fragment);
             }

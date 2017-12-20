@@ -20,7 +20,7 @@ public class BottomNavigationViewHelper {
                 //noinspection RestrictedApi
                 item.setShiftingMode(false);
                 // set once again checked value, so view will be updated
-                //noinspection RestrictedApi
+                // noinspection RestrictedApi
                 item.setChecked(item.getItemData().isChecked());
             }
         } catch (NoSuchFieldException e) {

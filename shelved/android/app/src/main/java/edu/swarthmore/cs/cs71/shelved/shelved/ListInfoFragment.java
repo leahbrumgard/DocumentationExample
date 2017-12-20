@@ -40,8 +40,6 @@ public class ListInfoFragment extends ListFragment {
         bundle.putString("listName", list.getName());
         bundle.putBoolean("publicStatus", list.isPublicStatus());
         bundle.putInt("position", position);
-//        bundle.put
-//        TODO: figure out how ot get books from list?
         ListInfoFragment fragment = new ListInfoFragment();
         fragment.setArguments(bundle);
         return fragment;
@@ -65,15 +63,6 @@ public class ListInfoFragment extends ListFragment {
 
         addBook = (ImageButton)view.findViewById(R.id.add_book);
         Bundle argss = getArguments();
-
-        // notifies and tells GUI to redraw shelf when book list changes
-        // TODO: chagne this to use updatelist stuff
-//        AppSingleton.getInstance(getContext()).getModel(getContext()).addBookAddedToListListener(new BookAddedToListListener() {
-//            @Override
-//            public void bookAddedToList() {
-//                bookListAdapter.notifyDataSetChanged();
-//            }
-//        });
 
         setFieldsFromList(view);
         return view;
@@ -101,7 +90,7 @@ public class ListInfoFragment extends ListFragment {
             }
         });
 
-        //TODO: change tthis stuff once we have list stuff in shelf Model
+        //TODO: change this stuff once we have list stuff in shelf Model
         readingList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {

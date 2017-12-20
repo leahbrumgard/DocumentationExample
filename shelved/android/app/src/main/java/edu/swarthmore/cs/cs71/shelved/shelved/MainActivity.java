@@ -12,11 +12,8 @@ import android.view.MenuItem;
 
 import java.util.NoSuchElementException;
 
-//import com.facebook.CallbackManager;
 
 public class  MainActivity extends AppCompatActivity {
-//    private CallbackManager callbackManager;
-
     private String userId;
 
     @Override
@@ -67,24 +64,20 @@ public class  MainActivity extends AppCompatActivity {
                 });
 
         // Getting userID from LoginActivity
-
-        //Manually displaying the first fragment - one time only
+        // Manually displaying the first fragment - one time only
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.frame_layout_main, ShelfFragment.newInstance(userId));
         transaction.addToBackStack(null);
         transaction.commit();
 
-        //Used to select an item programmatically
+        // Used to select an item programmatically
         bottomNavigationView.getMenu().getItem(2).setChecked(true);
 
         // TODO: Try to get userID after transferring from Login
-
-
     }
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-//        callbackManager.onActivityResult(requestCode, resultCode, data);
     }
 
     public String getUserId() {

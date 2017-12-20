@@ -20,7 +20,6 @@ import static android.app.Activity.RESULT_OK;
 
 public class CameraFragment extends Fragment {
     static final int PICK_CONTACT_REQUEST = 1;  // The request code
-
     private TextView _ISBN;
     private TextView _Author;
     private TextView _Title;
@@ -44,8 +43,7 @@ public class CameraFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         Context context;
         View rootView = inflater.inflate(R.layout.fragment_camera, container, false);
         context = rootView.getContext();
@@ -59,10 +57,7 @@ public class CameraFragment extends Fragment {
         _AddBook = (Button) rootView.findViewById(R.id.add_book_button);
 
         Intent intent = new Intent(context, ScannerActivity.class);
-
-        Log.d(TAG, "about to call activity start");
         startActivityForResult(intent, PICK_CONTACT_REQUEST);
-
         return rootView;
     }
 
@@ -102,9 +97,6 @@ public class CameraFragment extends Fragment {
                         Toast.makeText(getContext(), "Added to Shelf", Toast.LENGTH_SHORT).show();
                     }
                 });
-            //} else {
-            //    _Author.setText("Unknown author");
-            //    _Title.setText("Unknown title");
             }
         }
     }

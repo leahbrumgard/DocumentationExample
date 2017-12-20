@@ -72,11 +72,9 @@ public class SearchFragment extends Fragment {
         searchView.setSubmitButtonEnabled(true);
         searchView.setQueryHint("Search for books");
 
-//        mPagerAdapter = new PagerAdapter(getFragmentManager());
-//
-//        mViewPager = (ViewPager) view.findViewById(R.id.pager);
-//        mViewPager.setAdapter(mPagerAdapter);
-
+        //  mPagerAdapter = new PagerAdapter(getFragmentManager());
+        //  mViewPager = (ViewPager) view.findViewById(R.id.pager);
+        //  mViewPager.setAdapter(mPagerAdapter);
         return view;
     }
 

@@ -31,14 +31,11 @@ public class ProfileFragment extends Fragment implements View.OnClickListener{
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_profile, container, false);
-
         settingsBtn = (ImageButton)rootView.findViewById(R.id.popup_settings);
         Button shelvesBtn = (Button) rootView.findViewById(R.id.ShelvesButton);
         Button listsBtn = (Button) rootView.findViewById(R.id.ListsButton);

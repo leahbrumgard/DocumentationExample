@@ -19,7 +19,6 @@ import java.util.List;
 public class SearchResultsFragment extends Fragment {
 
     // takes in same view model as SearchFragment
-
     private ListView listView;
     private SearchListAdapter searchListAdapter;
     private List<SimpleBook> books = new ArrayList<>();
@@ -32,18 +31,12 @@ public class SearchResultsFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_search_results, container, false);
-
         super.onCreate(savedInstanceState);
-
         listView = (ListView) view.findViewById(android.R.id.list);
-
         return view;
     }
 
@@ -82,7 +75,6 @@ public class SearchResultsFragment extends Fragment {
         Log.d("Replace Fragment: ", "changing to BookInfoFragment");
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
         transaction.replace(R.id.search_results_view, someFragment);
-//        transaction.replace(R.id.frame_layout_main, someFragment);
         transaction.addToBackStack(null);
         transaction.commit();
     }

@@ -34,14 +34,12 @@ public class SignupActivity extends AppCompatActivity {
         hideKeyboard(this);
         setContentView(R.layout.activity_signup);
         ButterKnife.bind(this);
-
         _signupButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 signup();
             }
         });
-
         _loginLink.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -63,13 +61,10 @@ public class SignupActivity extends AppCompatActivity {
     }
 
     public void signup() {
-
-
         if (!validate()) {
             onSignupFailed();
             return;
         }
-
         _signupButton.setEnabled(false);
 
         final ProgressDialog progressDialog = new ProgressDialog(SignupActivity.this,
@@ -100,8 +95,7 @@ public class SignupActivity extends AppCompatActivity {
             }
         };
 
-        AppSingleton.getInstance(getApplicationContext()).getModel(getApplicationContext()).signUp(getApplicationContext(), success,
-                failure, name, email, password);
+        AppSingleton.getInstance(getApplicationContext()).getModel(getApplicationContext()).signUp(getApplicationContext(), success, failure, name, email, password);
         finish();
 
         new android.os.Handler().postDelayed(
@@ -115,7 +109,6 @@ public class SignupActivity extends AppCompatActivity {
                     }
                 }, 3000);
     }
-
 
     public void onSignupSuccess() {
         _signupButton.setEnabled(true);
@@ -131,7 +124,6 @@ public class SignupActivity extends AppCompatActivity {
 
     public boolean validate() {
         boolean valid = true;
-
         String name = _nameText.getText().toString();
         String email = _emailText.getText().toString();
         String password = _passwordText.getText().toString();
