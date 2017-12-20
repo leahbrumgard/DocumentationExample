@@ -43,7 +43,6 @@ public class ListInfoFragment extends ListFragment {
 //        bundle.put
 //        TODO: figure out how ot get books from list?
         ListInfoFragment fragment = new ListInfoFragment();
-
         fragment.setArguments(bundle);
         return fragment;
     }
@@ -52,6 +51,7 @@ public class ListInfoFragment extends ListFragment {
         this.listName = bundle.getString("listName");
         this.publicStatus = bundle.getBoolean("publicStatus");
         this.listPosition = bundle.getInt("position");
+        this.list = new SimpleReadingList(listName, publicStatus);
     }
 
     @Override
@@ -94,10 +94,10 @@ public class ListInfoFragment extends ListFragment {
             @Override
             public void onClick(View v) {
                 // Create and show AddBookDialog
-                AddBookDialog alert = new AddBookDialog(getContext());
+                //AddBookToListDialog alert = new AddBookToListDialog(getContext(), list);
                 Log.d(TAG, "show add book dialog");
                 Log.d(TAG, "called newInstance");
-                alert.show();
+                //alert.show();
             }
         });
 

@@ -54,6 +54,7 @@ public class AppSingleton {
             addListNetworkListeners(context, model);
             addLogInSuccessNetWorkListeners(context, model);
             addBookToListNetworkListeners(context, model);
+            model.initializeReadingLists();
             //addRecommendedBookListeners(context, model);
         }
         return model;

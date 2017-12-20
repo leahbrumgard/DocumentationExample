@@ -31,6 +31,10 @@ public class ShelvedModel {
     Set<RecommendedBookListListener> recommendedBookListListeners = new HashSet<>();
 
 
+    public void initializeReadingLists() {
+        SimpleReadingList wishlist = new SimpleReadingList("Wishlist", true);
+        this.readingLists.add(wishlist);
+    }
 
     ////////////// Getter methods ///////////////////////
     public List<SimpleBook> getBookList() {
@@ -154,8 +158,7 @@ public class ShelvedModel {
 
 
     //TODO: do this by ints?? not sure
-    public void addBookToList(SimpleBook book, int position) {
-        SimpleReadingList list = readingLists.get(position);
+    public void addBookToList(SimpleBook book, SimpleReadingList list) {
         list.addBook(book);
         notifyListUpdatedListeners();
         notifyBookAddedToListListeners(userID, book);

@@ -32,6 +32,7 @@ public class Server {
         post("/searchByISBN", new ServerRouteSearchByISBN(sf), GsonUtils.makeMessageGson()::toJson);
         post("/updateList", new ServerRouteUpdateReadingLists(sf), GsonUtils.makeMessageGson()::toJson);
         post("/getRecBooks", new ServerRouteRecommendedBooks(sf), GsonUtils.makeMessageGson()::toJson);
+        post("/addBookToList", new ServerRouteAddBookToList(sf), GsonUtils.makeMessageGson()::toJson);
     }
 
 

@@ -13,6 +13,7 @@ import android.widget.*;
 import com.google.gson.Gson;
 import com.koushikdutta.ion.Ion;
 import edu.swarthmore.cs.cs71.shelved.model.simple.SimpleBook;
+import edu.swarthmore.cs.cs71.shelved.model.simple.SimpleReadingList;
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
@@ -27,6 +28,7 @@ public class BookInfoFragment extends Fragment {
     private String imageUrl;
     private int pages;
     private ImageButton addBook;
+    private ImageButton addBookToList;
     private SimpleBook simpleBook;
 
     List<SimpleBook> recommendedBooks;
@@ -73,6 +75,7 @@ public class BookInfoFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_book_info, container, false);
         //Log.d("BOOK INFO", book.getAuthor().getAuthorName());
         addBook = (ImageButton)rootView.findViewById(R.id.add_book);
+        addBookToList = (ImageButton)rootView.findViewById(R.id.add_book_to_list);
         setFieldsFromBook(rootView);
         Log.d("ABOUT TO SET REC LIST", "");
         recList = (ListView) rootView.findViewById(android.R.id.list);
@@ -125,6 +128,20 @@ public class BookInfoFragment extends Fragment {
                 Log.d("Book info fragment", "show add book dialog");
                 Log.d("Book info fragment", "called newInstance");
                 AddBookAnywhereDialog alert = new AddBookAnywhereDialog(getContext(),simpleBook);
+                alert.show();
+            }
+        });
+
+        addBookToList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Create and show AddBookDialog
+                //AddBookDialog alert = new AddBookDialog(getContext());
+                // TODO: Intent
+                Log.d("Book info fragment", "show add book to list dialog");
+                Log.d("Book info fragment", "called newInstance");
+                SimpleReadingList list = AppSingleton.getInstance(getContext()).getModel(getContext()).getLists().get(0);
+                AddBookToListDialog alert = new AddBookToListDialog(getContext(),list, simpleBook);
                 alert.show();
             }
         });

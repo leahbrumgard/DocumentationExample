@@ -23,6 +23,7 @@ public class ServerRouteAddBookToList extends ServerRoute {
                     request.queryParams("userID"),
                     request.queryParams("title"),
                     request.queryParams("author"));
+            System.out.println("INSIDE SERVER ROUTE ADD BOOK TO LIST");
 
             SimpleBook simpleBook = new SimpleBook();
             simpleBook.setTitle(newBook.getTitle().getTitle());
