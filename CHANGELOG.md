@@ -242,17 +242,30 @@ In general, these classes describe how the server interacts with hibernate/mysql
 ## As of 2017-12-7
 - Scanning an isbn and searching for an isbn returns the correct SimpleBook result
 - Refactored BookInfo class to no longer allow injection attacks, to remove dependency on ISBNdb, and to use a key to access Google Books' API
+
 ## As of 2017-12-9
 - Refactored BookInfo class to query Google Books a smaller number of times to increase performance and more importantly keep us from going over our quota by running the tests in bulk
 
 ## Created on 2017-12-12
 - BookInfoFragment uses the fields from the SimpleBook object. We added the book cover URL as a field of the SimpleBook object, and then on the BookInfoFragment we use the Ion library to load a url image into an ImageView android object.
+- Completed writing server/networking code for adding a list and adding a book to a list
+- Created basic fragment for individual list view
 
 ## Created on 2017-12-13
 - Added progress dialog that spins after a user clicks logout and before the LoginActivity is started
 
 ## Created on 2017-12-14
 - EditProfileDialog allows user to edit profile fields like name, bio, location
+- SearchFragment now functions with Title, Author, or ISBN 
 
 ## Created on 2017-12/17
 - Created progress dialog to appear when a user submits a search query
+- Added book cover images to the Camera Fragment (after scanning an ISBN and showing info for book)
+- Added book cover images to the list items that appear in search and in list view of shelves
+- Added book cover images to BookInfoFragment
+- Plus button on search_result_item is now linked to add the book to your shelf
+- Plus button on BookInfoFragment is now linked to add the book to your shelf
+- Recommended books now appear on the BookInfoFragment tab, and clicking on each recommended book redirects you to that book's BookInfoFragment
+
+## As of 2017-12-19
+- 
