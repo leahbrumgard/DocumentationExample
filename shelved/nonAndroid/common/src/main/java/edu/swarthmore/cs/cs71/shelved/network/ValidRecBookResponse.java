@@ -6,6 +6,7 @@ import java.util.List;
 
 public class ValidRecBookResponse extends ResponseMessage {
     private List<SimpleBook> possibleBooks;
+
     private ValidRecBookResponse() { super(true); }
 
     public ValidRecBookResponse(List<SimpleBook> possibleBooks) {

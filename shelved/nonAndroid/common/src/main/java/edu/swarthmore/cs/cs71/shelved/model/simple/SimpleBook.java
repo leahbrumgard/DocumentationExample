@@ -74,12 +74,6 @@ public class SimpleBook implements Book {
         return imageUrl;
     }
 
-    public List<Book> getRecBooks() {
-        //query Amazon's API
-        //http://docs.aws.amazon.com/AWSECommerceService/latest/DG/SuggestingSimilarItemstoBuy.html
-        return null;
-    }
-
 
     public Dictionary<String, Double> getPrices() {
         //query Amazon's API (and more)

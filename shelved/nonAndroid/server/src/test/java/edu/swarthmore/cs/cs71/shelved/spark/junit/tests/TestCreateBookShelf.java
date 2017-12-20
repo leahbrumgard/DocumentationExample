@@ -27,6 +27,5 @@ public class TestCreateBookShelf {
         Assert.assertEquals(1, newBookShelf.getNumRows());
         newBookShelf.removeRowShelf(hibRowShelf);
         Assert.assertEquals(0, newBookShelf.getNumRows());
-
     }
 }

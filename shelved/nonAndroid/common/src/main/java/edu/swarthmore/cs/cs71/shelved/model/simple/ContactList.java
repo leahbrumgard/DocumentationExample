@@ -6,7 +6,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class ContactList {
-    // List or array list???
     private Set<User> contactList = new HashSet<>();
 
     public ContactList() {

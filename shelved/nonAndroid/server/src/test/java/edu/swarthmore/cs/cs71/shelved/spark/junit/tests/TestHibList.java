@@ -12,7 +12,6 @@ public class TestHibList {
         HibReadingList list = new HibReadingList();
         list.setPublicStatus(true);
         list.resetName("My List");
-
         Assert.assertEquals("My List", list.getName());
         Assert.assertEquals(true, list.isPublicStatus());
         Assert.assertNotEquals(false, list.isPublicStatus());
@@ -30,7 +29,6 @@ public class TestHibList {
         book.setPages(13);
         book.setGenre("Computer Science");
         book.setPublisher("Unknown");
-
         list.addBook(book);
     }
 
@@ -50,5 +48,4 @@ public class TestHibList {
         list.addBook(book);
         list.removeBook(book);
     }
-
 }

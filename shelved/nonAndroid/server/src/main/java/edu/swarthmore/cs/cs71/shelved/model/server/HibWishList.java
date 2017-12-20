@@ -50,7 +50,6 @@ public class HibWishList implements CreatedList{
         this.list.add(shelvedBook);
     }
 
-
     public void removeBook(HibShelvedBook shelvedBook) {
         this.list.remove(shelvedBook);
     }

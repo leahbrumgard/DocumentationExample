@@ -28,27 +28,17 @@ public class HibReadingList implements CreatedList {
     public HibReadingList() {
     }
 
-
     public void addBook(HibBook book) { this.list.add(book); }
 
     public void removeBook(HibBook book) { this.list.remove(book); }
 
-
     // setters
-
     public void setId(int id) { this.id = id; }
-
     public void resetName(String listName) { this.listName = listName; }
-
     public void setPublicStatus(boolean publicStatus) { this.publicStatus = publicStatus; }
 
-
     //getters
-
     public int getId() { return this.id; }
-
     public String getName() { return this.listName; }
-
     public boolean isPublicStatus() { return this.publicStatus; }
-
 }

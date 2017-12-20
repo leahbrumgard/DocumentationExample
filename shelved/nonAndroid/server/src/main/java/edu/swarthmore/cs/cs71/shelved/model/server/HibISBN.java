@@ -16,7 +16,6 @@ public class HibISBN implements ISBN {
     private String isbn;
 
     private HibISBN() {
-
     }
 
     public HibISBN(String isbn) {

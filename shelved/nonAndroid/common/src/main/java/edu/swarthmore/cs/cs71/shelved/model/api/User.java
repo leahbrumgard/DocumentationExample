@@ -8,20 +8,14 @@ public interface User {
     public void setBio(String bio);
     public void setLocation(String location);
     void setShelves(); // initialize list of all Shelf
-
     void setSalt();
     void changePassword(String oldPassword, String newPassword);
-//    void resetPassword(String newPassword);
+
     // getters
-
     String getPassword();
-
     String getName();
-
     String getBio();
-
     String getLocation();
-
     String getSalt();
 
 

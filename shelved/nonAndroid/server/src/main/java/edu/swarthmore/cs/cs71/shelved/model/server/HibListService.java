@@ -23,7 +23,6 @@ public class HibListService {
         List<HibReadingList> hibReadingLists = session.createQuery("FROM HibReadingList").getResultList();
         for (HibReadingList list:hibReadingLists) {
             SimpleReadingList newSimpleReadingList = new SimpleReadingList("fix", false);
-            //TODO: LAn help should I just initialize these values to junk since theyre reset immediately?
             newSimpleReadingList.resetName(list.getName());
             newSimpleReadingList.setPublicStatus(list.isPublicStatus());
             readingLists.add(newSimpleReadingList);

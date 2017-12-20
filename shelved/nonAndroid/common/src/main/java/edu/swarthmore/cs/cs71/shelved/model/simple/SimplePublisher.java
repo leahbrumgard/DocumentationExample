@@ -4,12 +4,9 @@ import edu.swarthmore.cs.cs71.shelved.model.api.Publisher;
 
 public class SimplePublisher implements Publisher {
     private String publisher;
-    public String header = this.getClass().getSimpleName();
-
     public SimplePublisher(String publisher) {
         this.publisher = publisher;
     }
-
     public String getPublisher() {
         return publisher;
     }

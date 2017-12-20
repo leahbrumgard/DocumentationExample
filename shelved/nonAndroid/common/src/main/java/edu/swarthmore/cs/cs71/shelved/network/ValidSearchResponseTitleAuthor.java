@@ -6,6 +6,7 @@ import java.util.List;
 
 public class ValidSearchResponseTitleAuthor extends ResponseMessage {
     private List<SimpleBook> possibleBooks;
+
     private ValidSearchResponseTitleAuthor() { super(true); }
 
     public ValidSearchResponseTitleAuthor(List<SimpleBook> possibleBooks) {

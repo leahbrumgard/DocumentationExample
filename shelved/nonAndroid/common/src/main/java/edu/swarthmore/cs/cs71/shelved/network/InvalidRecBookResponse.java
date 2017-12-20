@@ -2,6 +2,7 @@ package edu.swarthmore.cs.cs71.shelved.network;
 
 public class InvalidRecBookResponse extends ResponseMessage {
     private String error_message;
+
     public InvalidRecBookResponse() {
          super(true);
     }

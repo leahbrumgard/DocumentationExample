@@ -17,11 +17,10 @@ public class ServerRouteAddList extends ServerRoute {
     @Override
     protected ResponseMessage execute(Request request, Response response) {
         try {
-
             String listName = request.queryParams("listName");
             String publicStatus = request.queryParams("publicStatus");
-
             boolean publicStatusBool;
+
             if (publicStatus.equals("true")) {
                 publicStatusBool = true;
             } else {
@@ -29,7 +28,6 @@ public class ServerRouteAddList extends ServerRoute {
             }
 
             HibReadingList newList = new HibListService().createList(listName, publicStatusBool);
-
             SimpleReadingList readingList = new SimpleReadingList(newList.getName(), newList.isPublicStatus());
 
             return new ValidListAddedResponse(readingList);

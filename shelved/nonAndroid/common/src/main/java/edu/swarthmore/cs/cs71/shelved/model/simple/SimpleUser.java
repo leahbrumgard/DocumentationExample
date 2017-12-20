@@ -18,7 +18,6 @@ public class SimpleUser implements User {
     private List<SimpleBookShelf> allShelves;
     private List<SimpleReadingList> allReadingLists;
     private String token;
-    // TODO: testing userBooks for now
     private List<SimpleBook> userBooks;
 
     public SimpleUser() {
@@ -28,37 +27,20 @@ public class SimpleUser implements User {
         setReadingLists();
     }
 
-
-
-//    public User(String username, String password, String name, String bio, String location, String salt) {
-//        this.username = username;
-//        this.password = password;
-//        this.name = name;
-//        this.bio = bio;
-//        this.location = location;
-//        this.salt = salt;
-//
-//    }
-
-
     @Override
     public void setToken(String token) {
         this.token = token;
     }
-
     @Override
     public void setEmail(String userName) {
         this.simpleEmail = new SimpleEmail(userName);
     }
-
     public void setSalt() {
         this.salt = BCrypt.gensalt();
     }
-
     public void setPassword(String password) {
         String hashedPassword = BCrypt.hashpw(password, this.salt);
         this.password = hashedPassword;
-
     }
 
     public void setName(String name) {
@@ -68,43 +50,32 @@ public class SimpleUser implements User {
     public void setShelves() {
         this.allShelves = new ArrayList<SimpleBookShelf>();
     }
-
     public void setReadingLists() {
         this.allReadingLists = new ArrayList<SimpleReadingList>();
     }
-
     public void changePassword(String oldPassword, String newPassword) {
-
         if (BCrypt.hashpw(oldPassword, this.salt).equals(password)) {
-
             this.setSalt();
-
             this.setPassword(newPassword);
         }
     }
-
 
     // getters
     public SimpleEmail getSimpleEmail() {
         return simpleEmail;
     }
-
     public String getPassword() {
         return password;
     }
-
     public String getName() {
         return name;
     }
-
     public String getBio() {
         return bio;
     }
-
     public String getLocation() {
         return location;
     }
-
     public String getSalt() {
         return salt;
     }
@@ -113,20 +84,16 @@ public class SimpleUser implements User {
     public void setBio(String bio) {
         this.bio = bio;
     }
-
     public void setLocation(String location) {
         this.location = location;
     }
-
     public List<SimpleBookShelf> getAllShelves() {
         return allShelves;
     }
     public void addBookShelf(SimpleBookShelf bookShelf){ allShelves.add(bookShelf);}
-
     public void addReadingList(SimpleReadingList readingList){
         this.allReadingLists.add(readingList);
     }
-    // TODO: currently adding Book to this userBooks list
     public void setUserBooks(){ this.userBooks = new ArrayList<SimpleBook>(); }
     public void addBook(SimpleBook book){
         this.userBooks.add(book);

@@ -4,6 +4,7 @@ import edu.swarthmore.cs.cs71.shelved.model.simple.SimpleBook;
 
 public class ValidSearchResponseISBN extends ResponseMessage {
     private SimpleBook book;
+
     private ValidSearchResponseISBN() { super(true); }
 
     public ValidSearchResponseISBN(SimpleBook simpleBook) {

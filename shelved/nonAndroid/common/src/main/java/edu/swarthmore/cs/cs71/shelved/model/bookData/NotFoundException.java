@@ -1,5 +1,4 @@
 package edu.swarthmore.cs.cs71.shelved.model.bookData;
-
 import org.json.JSONObject;
 
 public class NotFoundException extends Exception {

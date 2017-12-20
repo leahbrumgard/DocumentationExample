@@ -8,7 +8,6 @@ public class InvalidBookAddedResponse extends ResponseMessage {
     public InvalidBookAddedResponse(){
         super(true);
     }
-
     public InvalidBookAddedResponse(String error_message) {
         super(true);
         this.error_message = error_message;

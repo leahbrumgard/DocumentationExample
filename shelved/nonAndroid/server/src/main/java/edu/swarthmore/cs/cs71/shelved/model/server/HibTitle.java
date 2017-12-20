@@ -16,7 +16,6 @@ public class HibTitle implements Title {
     private String title;
 
     public HibTitle() {
-
     }
 
     public HibTitle(String title) {

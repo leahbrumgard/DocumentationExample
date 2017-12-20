@@ -15,16 +15,6 @@ public interface Book {
     void setImageUrl(String imageUrl);
     int getPages();
 
-//    Author getAuthor();
-//    Genre getGenre();
-//    Title getTitle();
-//
-//    Publisher getPublisher();
-
-
-    // Returns a list of recommended books based on current book object.
-//    List<Book> getRecBooks();
-
     // Returns a dictionary of book source mapped to accompanying price.
     // Dont use a string here
     Dictionary<String, Double> getPrices();

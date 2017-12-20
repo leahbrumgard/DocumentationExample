@@ -20,6 +20,5 @@ public class TestHibUser {
         Assert.assertEquals(email, newUser.getEmail().getEmail());
         Assert.assertEquals(name, newUser.getName());
         Assert.assertEquals(hashedPassword, newUser.getPassword());
-
     }
 }

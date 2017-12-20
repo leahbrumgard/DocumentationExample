@@ -31,38 +31,6 @@ public class HibUserService {
         EntityManager session = sf.createEntityManager();
         try {
             System.out.println("current email"+email);
-//            @SuppressWarnings("unchecked")
-//            List<HibUser> user = (List<HibUser>)
-//                    session
-//                            .createQuery("from HibUser u where u.email.email = :email")
-//                            .setParameter("email", email)
-//                            .getResultList();
-//            System.out.println("size of query: "+String.valueOf(user.size()));
-//            if (user.size() < 1){return -1;}
-//            HibUser currentUser = user.get(0);
-//            String salt = currentUser.getSalt();
-//            String hashedPassword = currentUser.getPassword();
-//            String checkingPassword = BCrypt.hashpw(password, salt);
-//            if (hashedPassword.equals(checkingPassword)){
-//                String token = UUID.randomUUID().toString();
-//                currentUser.setToken(token);
-//                PersistenceUtils.ENTITY_MANAGER.get().merge(user);
-//                return currentUser.getId();
-//            } else {
-//                return -2;
-//            }
-//            HibUser currentUser = user.get(0);
-//            String salt = currentUser.getSalt();
-//            String hashedPassword = currentUser.getPassword();
-//            String checkingPassword = BCrypt.hashpw(password, salt);
-//            if (hashedPassword.equals(checkingPassword)){
-//                String token = UUID.randomUUID().toString();
-//                currentUser.setToken(token);
-//                PersistenceUtils.ENTITY_MANAGER.get().merge(user);
-//                return currentUser.getId();
-//            } else {
-//                return -2;
-//            }
 
             List<HibUser> users = session.createQuery("FROM HibUser").getResultList();
             for (HibUser user:users){
@@ -78,7 +46,6 @@ public class HibUserService {
                     } else {
                         return -2;
                     }
-
                 }
             }
             return -1;
@@ -96,7 +63,6 @@ public class HibUserService {
     public int getUserNameId(SessionFactory sf, String userName) {
         EntityManager session = sf.createEntityManager();
         try {
-//            String hql = "SELECT userName_id FROM userName WHERE userName_name = \""+userName+"\"";
             System.out.println("line 1");
             Query query = session.createQuery("FROM HibUserName");
             System.out.println("line 2");

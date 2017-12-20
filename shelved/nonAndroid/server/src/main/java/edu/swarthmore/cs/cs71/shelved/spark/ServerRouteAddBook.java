@@ -25,17 +25,12 @@ public class ServerRouteAddBook extends ServerRoute {
                     request.queryParams("title"),
                     request.queryParams("author"));
 
-
             SimpleBook simpleBook = new SimpleBook();
             simpleBook.setTitle(newBook.getTitle().getTitle());
             simpleBook.setAuthor(newBook.getAuthor().getAuthorName());
-            //        simpleBook.setGenre(newBook.getGenre().getGenre());
-            //        simpleBook.setPages(newBook.getPages());
-            //        simpleBook.setPublisher(newBook.getPublisher().getPublisher());
             return new ValidBookAddedResponse(simpleBook);
         } catch (Exception e){
             return new InvalidBookAddedResponse("Invalid book added response");
         }
-
     }
 }

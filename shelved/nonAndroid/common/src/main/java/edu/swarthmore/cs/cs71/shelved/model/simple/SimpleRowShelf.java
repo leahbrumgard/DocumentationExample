@@ -17,15 +17,12 @@ public class SimpleRowShelf implements RowShelf {
     public void addBook(SimpleShelvedBook shelvedBook) {
         this.rowList.add(shelvedBook);
     }
-
     public void removeBook(SimpleShelvedBook book) {
         this.rowList.remove(book);
     }
-
     public SimpleShelvedBook getBook(int pos) {
         return rowList.get(pos);
     }
-
 
     public void resetPosition(int oldPos, int newPos) {
         SimpleShelvedBook oldBook = this.rowList.get(oldPos);

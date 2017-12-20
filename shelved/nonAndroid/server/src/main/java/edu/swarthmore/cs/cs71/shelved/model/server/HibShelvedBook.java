@@ -31,22 +31,9 @@ public class HibShelvedBook implements ShelvedBook {
 
     public HibShelvedBook() {
     }
-
     public void setBook(HibBook book) {
         this.book = book;
     }
-
-    //    @Id
-//    @Column(name="shelvedBook_id")
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    public int getId() {
-//        return this.id;
-//    }
-//
-//    public void setId(int id) {
-//        this.id = id;
-//    }
-
 
 
     @Override

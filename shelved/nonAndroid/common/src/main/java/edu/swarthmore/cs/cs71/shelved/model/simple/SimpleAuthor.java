@@ -11,14 +11,17 @@ public class SimpleAuthor implements Author {
         this.fullName = authorName;
         this.lastName = authorName.substring(authorName.lastIndexOf(" ") +1);
     }
+
     @Override
     public String getAuthorName() {
         return fullName;
     }
+
     @Override
     public String getLastName() {
         return lastName;
     }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

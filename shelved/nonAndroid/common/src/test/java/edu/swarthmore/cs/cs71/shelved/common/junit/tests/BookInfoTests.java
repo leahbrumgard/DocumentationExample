@@ -35,7 +35,6 @@ public class BookInfoTests {
         content = bookInfo.getHTMLContent(url);
         String html2 = content.toString();
 
-
         //TESTING TITLE
         String title1 = bookInfo.getTitleFromISBN(jObj1,html1,isbn1);
         String title2 = bookInfo.getTitleFromISBN(jObj2,html2,isbn2);
@@ -127,15 +126,6 @@ public class BookInfoTests {
         for (SimpleBook book:listOfRecs){
             bookInfo.printBookInfo(book);
         }
-        //Not really part of test; this is an example of how you might parse the output.
-        //        String ISBN = "0201485672";
-        //        List<String> listOfRecs2 = bookInfo.getRecommendedBooksFromISBN(ISBN);
-        //        String title = bookInfo.getTitleFromISBN(ISBN);
-        //        System.out.println("\nIf you liked " + title + ", we recommend:");
-        //        for (String book : listOfRecs2) {
-        //            System.out.println("    " + book);
-        //        }
-
     }
 
     public void compareBooks(SimpleBook one, SimpleBook two){
@@ -153,30 +143,6 @@ public class BookInfoTests {
         SimpleBook percyJackson = bookInfo.populateSimpleBookFromISBN(isbn);
         bookInfo.printBookInfo(percyJackson);
     }
-
-//    @Test
-//    public void testScrapeLink() throws ParserConfigurationException, SAXException, XPathExpressionException, IOException {
-//        // this tests that "Harry Potter and the Sorcerer's Stone" returns all **possible** book isbns (some bookInfo sources don't
-//        // list the isbns easily)
-//        // Takes about 15 seconds to run. In our app, the method here only gets called if the quicker methods can't find anything.
-//        BookInfo bookInfo = new BookInfo();
-//        List<String> listOfISBNs = bookInfo.getISBNFromTitleAuthorGoodreads("Harry Potter and the Sorcerer's Stone", "");
-//        List<String> customListOfISBNs = new ArrayList<>();
-//        customListOfISBNs.add("9780439554930");
-//        customListOfISBNs.add("2940000829790");
-//        customListOfISBNs.add("B005E0QXGG");
-//        customListOfISBNs.add("9780439211161");
-//        customListOfISBNs.add("9781548602642");
-//        customListOfISBNs.add("9780439294829");
-//        customListOfISBNs.add("9785550118191");
-//        customListOfISBNs.add("2940000052372");
-//        customListOfISBNs.add("9780757991714");
-//        customListOfISBNs.add("9780887246586");
-//        customListOfISBNs.add("2940012085788");
-//        customListOfISBNs.add("9781602491793");
-//        customListOfISBNs.add("9781934840573");
-//        Assert.assertEquals(customListOfISBNs, listOfISBNs);
-//    }
 
     @Test
     public void testPopulateSimpleBook() throws NotFoundException, ParserConfigurationException, IOException, XPathExpressionException, SAXException, EmptyQueryException {
@@ -203,12 +169,6 @@ public class BookInfoTests {
         for (SimpleBook book:simpleBookList){
             bookInfo.printBookInfo(book);
         }
-        //  Assert.assertEquals("The Mystery Shopper's Manual", simpleBook.getTitle().getTitle());
-        //  Assert.assertEquals("Cathy Stucker", simpleBook.getAuthor().getAuthorName());
-        //  Assert.assertEquals("Customer services", simpleBook.getGenre().getGenre());
-        //  Assert.assertEquals("Special Interests Publishing", simpleBook.getPublisher().getPublisher());
-        //  Assert.assertEquals(256, simpleBook.getPages());
-
     }
 
 }

@@ -28,9 +28,6 @@ public class ServerRouteAddBookToList extends ServerRoute {
             SimpleBook simpleBook = new SimpleBook();
             simpleBook.setTitle(newBook.getTitle().getTitle());
             simpleBook.setAuthor(newBook.getAuthor().getAuthorName());
-            //        simpleBook.setGenre(newBook.getGenre().getGenre());
-            //        simpleBook.setPages(newBook.getPages());
-            //        simpleBook.setPublisher(newBook.getPublisher().getPublisher());
             return new ValidBookAddedToListResponse(simpleBook);
         } catch (Exception e){
             return new InvalidBookAddedToListResponse("Invalid book added response");

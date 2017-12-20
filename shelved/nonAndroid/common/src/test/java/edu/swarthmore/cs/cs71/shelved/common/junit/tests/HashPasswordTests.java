@@ -25,7 +25,6 @@ public class HashPasswordTests {
 
 
         Assert.assertEquals(password, hashedCorrectEntered);
-
         Assert.assertNotEquals(password, hashedWrongEntered);
     }
 
