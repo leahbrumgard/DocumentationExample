@@ -25,8 +25,8 @@ import java.util.List;
 public class BookInfo {
     private final String GOODREADS_KEY = "VCtvMQ3iSjQaSHPXlhGZQA";
     private final String GOOGLE_KEY = "AIzaSyAhOYmtyu0DYSipcoZzoeYjomVqYBQjHJQ";
-//    private final String GOOGLE_KEY_old = "AIzaSyAjhcw1HxBoBsw19IE4CGN8NxMxiaxZ-Po";
-    //private final String GOOGLE_KEY = "AIzaSyAowLKnhi1-ovIJoeKvuNrXyxcZ0noMJzY";
+    //private final String GOOGLE_KEY_2 = "AIzaSyAjhcw1HxBoBsw19IE4CGN8NxMxiaxZ-Po";
+    //private final String GOOGLE_KEY_3 = "AIzaSyAowLKnhi1-ovIJoeKvuNrXyxcZ0noMJzY";
 
 
     private final int MAX_BOOKS = 3;
@@ -41,37 +41,14 @@ public class BookInfo {
         String html = getGoodreadsHTMLFromISBN(isbn);
 
         simpleBook.setTitle(getTitleFromISBN(jObj, html, isbn));
-        //Purposefully throws a not found exception if there isn't a title
-
         simpleBook.setAuthor(getAuthorFromISBN(jObj, html, isbn));
-        //Purposefully throws a not found exception if there isn't an author
+        //Purposefully throws a not found exception if there isn't a title or author
 
         simpleBook.setISBN(isbn);
-
-        try {
-            simpleBook.setGenre(getGenreFromISBN(jObj, html, isbn));
-        } catch (NotFoundException e) {
-            simpleBook.setGenre("");
-        }
-
-        try {
-            simpleBook.setPublisher(getPublisherFromISBN(jObj, html, isbn));
-        } catch (NotFoundException e) {
-            simpleBook.setPublisher("");
-        }
-
-        try {
-            simpleBook.setPages(getNumPagesFromISBN(jObj, html, isbn));
-        } catch (NotFoundException e) {
-            simpleBook.setPages(-1);
-        }
-
-        try {
-            simpleBook.setImageUrl(getUrlBookCoverFromISBN(jObj, isbn));
-        } catch (NotFoundException e){
-            simpleBook.setImageUrl(null);
-        }
-
+        simpleBook.setGenre(getGenreFromISBN(jObj, html, isbn));
+        simpleBook.setPublisher(getPublisherFromISBN(jObj, html, isbn));
+        simpleBook.setPages(getNumPagesFromISBN(jObj, html, isbn));
+        simpleBook.setImageUrl(getUrlBookCoverFromISBN(jObj, isbn));
         return simpleBook;
     }
 
@@ -153,7 +130,7 @@ public class BookInfo {
         } else if (html != null){ //try Goodreads. Will still throw NotFoundException if not found
             return getGenreFromISBNGoodreads(ISBN, html);
         } else {
-            throw new NotFoundException("Genre not found", jObj);
+            return "";
         }
     }
 
@@ -161,7 +138,7 @@ public class BookInfo {
         if (jObj != null) {
             return getPublisherGoogleJson(jObj);
         } else { //try Goodreads. Will still throw NotFoundException if not found
-            throw new NotFoundException("Publisher not found", null);
+            return "";
         }
     }
 
@@ -172,7 +149,7 @@ public class BookInfo {
         } else if (html != null){ //try Goodreads. Will still throw NotFoundException if not found
             return getNumPagesFromISBNGoodreads(ISBN, html);
         } else {
-            throw new NotFoundException("Num pages not found", jObj);
+            return -1;
         }
     }
 
@@ -217,67 +194,13 @@ public class BookInfo {
         return getISBNGoogleJson(jObj);
     }
 
-
-
     public String getUrlBookCoverFromISBN(JSONObject jObj, String isbn) throws EmptyQueryException, IOException, NotFoundException {
         try {
             return jObj.getJSONArray("items").getJSONObject(0).getJSONObject("volumeInfo").getJSONObject("imageLinks").getString("smallThumbnail");
         } catch (Exception e){
-            throw new NotFoundException(e.toString(), jObj);
+            return null;
         }
     }
-    public List<String> getAuthorListFromTitle(String title) throws IOException, XPathExpressionException, SAXException, ParserConfigurationException, EmptyQueryException, NotFoundException {
-        List<String> isbnList = getISBNListFromTitleAndOrAuthor(title, "");
-        List<String> author = new ArrayList<>();
-        for (String isbn:isbnList){
-            JSONObject jObj = getJsonFromQueryGoogle("","",isbn);
-            String goodreadsId = getGoodreadsId(isbn);
-            URL url = new URL("https://www.goodreads.com/book/show/" + goodreadsId);
-            StringBuffer content = getHTMLContent(url);
-            author.add(getAuthorFromISBN(jObj, content.toString(), isbn));
-        }
-        return author;
-    }
-
-    public List<String> getPublisherListFromTitleAndOrAuthor(String title, String author) throws IOException, NotFoundException, SAXException, EmptyQueryException, ParserConfigurationException, XPathExpressionException {
-        List<String> isbnList = getISBNListFromTitleAndOrAuthor(title, author);
-        List<String> publisher = new ArrayList<>();
-        for (String isbn:isbnList){
-            JSONObject jObj = getJsonFromQueryGoogle("","",isbn);
-            String goodreadsId = getGoodreadsId(isbn);
-            URL url = new URL("https://www.goodreads.com/book/show/" + goodreadsId);
-            StringBuffer content = getHTMLContent(url);
-            publisher.add(getPublisherFromISBN(jObj, content.toString(), isbn));
-        }
-        return publisher;
-    }
-
-    public List<Integer> getNumPagesListFromTitleAndOrAuthor(String title, String author) throws IOException, NotFoundException, SAXException, EmptyQueryException, ParserConfigurationException, XPathExpressionException {
-        List<String> isbnList = getISBNListFromTitleAndOrAuthor(title, author);
-        List<Integer> NumPages = new ArrayList<>();
-        for (String isbn:isbnList){
-            JSONObject jObj = getJsonFromQueryGoogle("","",isbn);
-            String goodreadsId = getGoodreadsId(isbn);
-            URL url = new URL("https://www.goodreads.com/book/show/" + goodreadsId);
-            StringBuffer content = getHTMLContent(url);
-            NumPages.add(getNumPagesFromISBN(jObj, content.toString(), isbn));
-        }
-        return NumPages;
-    }
-
-//    public List<String> getRecommendedBooksFromTitleAndOrAuthor(String title, String author) throws ParserConfigurationException, IOException, XPathExpressionException, NotFoundException, SAXException, EmptyQueryException {
-//        int upperBound = 5;
-//        List<String> isbnList = getISBNsFromTitleAndOrAuthor(title, author);
-//        Set<String> recBooksList = new HashSet(); //FIX
-//        for (int i=0;i<isbnList.size();i++) {
-//            if (i<upperBound){
-//                String isbn = isbnList.get(i);
-//                recBooksList.addAll(getRecommendedBooksFromISBN(isbn));
-//            }
-//        }
-//    }
-
-
 
     //GOODREADS section
     public String getGoodreadsId(String isbn) throws NotFoundException {
@@ -310,39 +233,6 @@ public class BookInfo {
         Element rootElement = getRootElement(xml);
         return getStringElement("item",rootElement);
     }
-
-
-
-//    private List<String> getAllPossibleBookURLs(String query) throws IOException {
-//        URIBuilder uriBuilder = new URIBuilder()
-//                .setScheme("https")
-//                .setHost("www.goodreads.com")
-//                .setPath("/search");
-//        uriBuilder.addParameter("q", query);
-//        URL url = new URL(uriBuilder.toString());
-//        String html = getHTMLContent(url).toString();
-//        List<Integer> begIndexList = getIndexBegList(html,"<a title=");
-//        List<Integer> extraEndIndexList = getIndecesEndList(html, "<img alt=\"");
-//        List<Integer> endIndexList = new ArrayList<>();
-//
-//        for (Integer index:extraEndIndexList) {
-//            String substr = html.substring(index+("<img alt=").length());
-//            substr = substr.substring(1,("saving".length()+1));
-//            if (!substr.equals("saving")){
-//                endIndexList.add(index);
-//            }
-//        }
-//        List<String> suggWebLinkList = new ArrayList<>();
-//        for (int i=0;i<begIndexList.size();i++){
-//            String longHTMLParse = html.substring(begIndexList.get(i), endIndexList.get(i));
-//            int index = longHTMLParse.indexOf("href=\"");
-//            String suggWebLink = "https://www.goodreads.com" + longHTMLParse.substring(index+("href=\"").length(),longHTMLParse.length()-12);
-//            suggWebLinkList.add(suggWebLink);
-//        }
-//        return suggWebLinkList;
-//
-//    }
-
 
 
     private String getTitleFromISBNGoodreads(String ISBN, String html) throws ParserConfigurationException, SAXException, XPathExpressionException, IOException, NotFoundException {
@@ -406,46 +296,6 @@ public class BookInfo {
         return 0;
     }
 
-
-//    public List<String> getISBNFromTitleAuthorGoodreads(String title, String author) throws IOException {
-//        List<String> urlList = getAllPossibleBookURLs(title + " " + author);
-//        List<String> isbnList = new ArrayList<>();
-//        for (String url:urlList){
-//            String isbn = getISBN(url);
-//            if (isbn.length()>0){
-//                isbnList.add(isbn);
-//            }
-//        }
-//        return isbnList;
-//    }
-
-
-
-    private String getISBN(String strUrl) throws IOException {
-        String html = getHTMLContent(new URL(strUrl)).toString();
-        String initialSearch = "<span itemprop='isbn'>";
-        String finalSearch = "</span>)</span>";
-        int begIndex = getIndexBegInt(html,initialSearch);
-        int endIndex = getIndexEndInt(html,finalSearch);
-        String longHTMLParse;
-        if (begIndex != 0 && endIndex != 0) {
-            initialSearch = "<span itemprop='isbn'>";
-            begIndex = getIndexBegInt(html, initialSearch);
-            longHTMLParse = html.substring(begIndex, endIndex);
-        } else {
-            initialSearch = "itemprop='isbn'>";
-            begIndex = getIndexBegInt(html,initialSearch);
-            longHTMLParse = html.substring(begIndex, begIndex+13);
-        }
-        if (longHTMLParse.contains("<")){
-            longHTMLParse = longHTMLParse.substring(0,longHTMLParse.indexOf("<"));
-        }
-        return longHTMLParse;
-    }
-
-//    public String getCoverUrlFromISBN(String ISBN){
-//        return "covers.openlibrary.org/b/isbn/"+ISBN+"-M.jpg";
-//    }
 
     //    https://www.googleapis.com/books/v1/volumes?q=intitle:so%20you%20want%20to%20be%20a%20wizard
     //GOOGLEAPIS Section
