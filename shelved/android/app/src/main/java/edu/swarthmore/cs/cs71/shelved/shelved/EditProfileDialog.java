@@ -59,14 +59,12 @@ public class EditProfileDialog extends AlertDialog.Builder {
         picture.addView(uploadPicture);
 
         this.setView(main);
-
         this.setPositiveButton("Add", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichButton) {
                 Log.v("profile dialog", "submit");
 
             }
         });
-
         this.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichButton) {
                 Log.v("profile dialog", "cancel");

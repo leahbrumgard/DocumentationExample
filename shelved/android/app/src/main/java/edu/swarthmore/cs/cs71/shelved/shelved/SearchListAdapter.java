@@ -40,12 +40,7 @@ public class SearchListAdapter extends ArrayAdapter<SimpleBook> {
         title.setText(book.getTitle().getTitle());
         author.setText(book.getAuthor().getAuthorName());
 
-        //Ion.with(cover).load(book.getImageUrl());
         Ion.with(cover).placeholder(R.mipmap.logo).error(R.mipmap.logo).load(book.getImageUrl());
-
-        //cover.setImageResource(R.mipmap.logo);
         return convertView;
     }
-
-
 }

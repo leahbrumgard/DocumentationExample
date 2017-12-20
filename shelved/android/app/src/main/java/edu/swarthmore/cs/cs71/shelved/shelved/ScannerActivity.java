@@ -74,7 +74,6 @@ public class ScannerActivity extends Activity implements ZBarScannerView.ResultH
 
     }
 
-
     public static String getISBN() {
         return ISBN;
     }
