@@ -250,13 +250,16 @@ In general, these classes describe how the server interacts with hibernate/mysql
 - BookInfoFragment uses the fields from the SimpleBook object. We added the book cover URL as a field of the SimpleBook object, and then on the BookInfoFragment we use the Ion library to load a url image into an ImageView android object.
 - Completed writing server/networking code for adding a list and adding a book to a list
 - Created basic fragment for individual list view
+- Updated BookInfo
 
 ## Created on 2017-12-13
 - Added progress dialog that spins after a user clicks logout and before the LoginActivity is started
+- Updated BookInfo
 
 ## Created on 2017-12-14
 - EditProfileDialog allows user to edit profile fields like name, bio, location
-- SearchFragment now functions with Title, Author, or ISBN 
+- SearchFragment now functions with Title, Author, or ISBN
+- Updated BookInfo
 
 ## Created on 2017-12/17
 - Created progress dialog to appear when a user submits a search query
@@ -268,4 +271,12 @@ In general, these classes describe how the server interacts with hibernate/mysql
 - Recommended books now appear on the BookInfoFragment tab, and clicking on each recommended book redirects you to that book's BookInfoFragment
 
 ## As of 2017-12-19
-- 
+- Refactored BookInfo to better follow the open-closed principle by updating populate method to not rely on so many try/catch statements
+- Got onClickListeners working for search result fragment
+- Automatically initialize a reading list named "wishlist"
+- Created addBookToList dialog
+  - This addBookToList dialog only adds to the default wishlist we've created.
+- Added a button to add a book to a list onto the search result items
+- Wrote more listeners for recommended books
+
+## Thanks for an amazing class :)
