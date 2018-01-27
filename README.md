@@ -1,6 +1,8 @@
 # Shelved
 This is an Android app project for CS71. Software Engineering (Prof. Zachary Palmer)
 
+View the Wiki page for our original vision statement, architectural information, an overview of the final status of the project (for now), and screenshots of the interfaces.
+
 This project is made with a maven project - **nonAndroid**, and an Android project - **android**.
 
 1. To test on a MySQL database, you need to change your credentials in 
